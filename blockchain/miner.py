@@ -24,7 +24,17 @@ def proof_of_work(last_proof):
 
     print("Searching for next proof")
     proof = 0
-    #  TODO: Your code here
+    
+    # encode the last_proof
+    encode_proof = str(last_proof).encode()
+
+    # hash the encoded proof
+    hashed = hashlib.sha256(encode_proof).hexdigest()
+
+    # check for valid proof
+    # while false add to proof
+    while valid_proof(hashed, proof) is False:
+        proof += 1
 
     print("Proof found: " + str(proof) + " in " + str(timer() - start))
     return proof
