@@ -50,7 +50,19 @@ def valid_proof(last_hash, proof):
     """
 
     # TODO: Your code here!
-    pass
+    # save the first 5 of last hash
+    last_five = last_hash[-5:]
+    # create a guess from the encoded proof
+    guess = str(proof).encode()
+    # hash the guess
+    guess_hash = hashlib.sha256(guess).hexdigest()
+
+    # If the first 5 of the guess == the last five of last hash
+        # return true
+    if guess_hash[:5] == last_five:
+        return True
+    
+    return False
 
 
 if __name__ == '__main__':
