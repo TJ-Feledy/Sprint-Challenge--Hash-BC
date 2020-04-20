@@ -34,7 +34,7 @@ def proof_of_work(last_proof):
     # check for valid proof
     # while false add to proof
     while valid_proof(hashed, proof) is False:
-        proof += 1
+        proof += 7
 
     print("Proof found: " + str(proof) + " in " + str(timer() - start))
     return proof
