@@ -24,11 +24,18 @@ This sprint challenge is divided up into three parts:  Hash tables coding, block
 
 Explain in detail the workings of a dynamic array:
 * What is the runtime complexity to access an array, add or remove from the front, and add or remove from the back?
-* What is the worse case scenario if you try to extend the storage size of a dynamic array?
+    - The runtime to access an array is 0(1) or constant, add/remove from front is 0(n) or linear, and add/remove from back is 0(1) constant unless the array needs to be resized. Then it would be  0(n) linear.
+
+* What is the worst case scenario if you try to extend the storage size of a dynamic array?
+    - The worst case for resizing an array is linear - 0(n).
 
 Explain how a blockchain is structured. What are the blocks, what is the chain? How is the data organized?
+    - A blockchain is structured as a class object that holds a list of objects. The list in this case is called the chain. The chain holds the objects known as blocks. The blocks hold information about it's index in the chain, possibly a timestamp, a list of any transactions currently stored in the block, the proof that was used to mine the block, and the previous blocks hash.
  
 Explain how proof of work functions. How does it operate. How does this protect the chain from attack. What kind of attack is possible?
+    - When a block is mined, it generates a 'proof'. It does this by taking a string version of the block and adding something in string form to the end of it and hashing the whole thing.  If the hashed block string meets certain criteria, it will be validated.
+    - This protects from attack because now the hash of the block will be stored inside the next block in the chain, and because the valid proof is part of that hash, it cannot be changed and still produce the same hash string. In turn, when the next block is mined, there will be discrepancies in the chain.
+    - There is the possibility of a 51% attack. Where someone owns >50% of the networks resources. This would allow them to produce an altered chain before someone else could produce the next block for the original chain.
 
 ## Project Set Up
 

@@ -24,7 +24,17 @@ def proof_of_work(last_proof):
 
     print("Searching for next proof")
     proof = 0
-    #  TODO: Your code here
+    
+    # encode the last_proof
+    encode_proof = str(last_proof).encode()
+
+    # hash the encoded proof
+    hashed = hashlib.sha256(encode_proof).hexdigest()
+
+    # check for valid proof
+    # while false add to proof
+    while valid_proof(hashed, proof) is False:
+        proof += 7
 
     print("Proof found: " + str(proof) + " in " + str(timer() - start))
     return proof
@@ -40,7 +50,19 @@ def valid_proof(last_hash, proof):
     """
 
     # TODO: Your code here!
-    pass
+    # save the first 5 of last hash
+    last_five = last_hash[-5:]
+    # create a guess from the encoded proof
+    guess = str(proof).encode()
+    # hash the guess
+    guess_hash = hashlib.sha256(guess).hexdigest()
+
+    # If the first 5 of the guess == the last five of last hash
+        # return true
+    if guess_hash[:5] == last_five:
+        return True
+    
+    return False
 
 
 if __name__ == '__main__':
